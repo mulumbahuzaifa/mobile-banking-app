@@ -5,7 +5,10 @@ import 'package:provider/provider.dart';
 import '../providers/app_state.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
@@ -17,8 +20,13 @@ class _LoginScreenState extends State<LoginScreen> {
   void _handleLogin() {
     if (_emailController.text == 'user@example.com' &&
         _passwordController.text == 'password') {
+      // Simulate successful login by resetting the email and password controllers
+      _emailController.clear();
+      _passwordController.clear();
+
       Provider.of<AppState>(context, listen: false)
           .logout(); // Reset state for demo purposes
+      // Navigate to the account overview screen
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -26,6 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 AccountOverviewScreen(email: _emailController.text)),
       );
     } else {
+      // Simulate error by setting an error message
       setState(() {
         error = 'Invalid email or password';
       });
@@ -53,6 +62,11 @@ class _LoginScreenState extends State<LoginScreen> {
             const Text(
               'Welcome to Luwa M-Banking!',
               style: TextStyle(fontSize: 24, color: Colors.white),
+            ),
+            const SizedBox(height: 10),
+            const Text(
+              'Login to your account',
+              style: TextStyle(fontSize: 16, color: Colors.white),
             ),
             const SizedBox(height: 10),
             TextField(
@@ -94,9 +108,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ElevatedButton(
               onPressed: _handleLogin,
               style: ElevatedButton.styleFrom(
-                  // primary: Colors.blue, // background
-                  // onPrimary: Colors.white, // foreground
-                  ),
+                foregroundColor: Colors.white,
+                backgroundColor: Colors.blue, // foreground
+              ),
               child: const Text('Login'),
             ),
           ],

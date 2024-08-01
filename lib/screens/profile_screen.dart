@@ -5,13 +5,13 @@ import 'login_screen.dart';
 class ProfileScreen extends StatelessWidget {
   final String email;
 
-  ProfileScreen({required this.email});
+  const ProfileScreen({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Profile'),
+        title: const Text('Profile'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -19,26 +19,26 @@ class ProfileScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
+            const Text(
               'User Info',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
-            Text('Email: $email', style: TextStyle(fontSize: 18)),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+            Text('Email: $email', style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => const LoginScreen()),
                   (Route<dynamic> route) => false,
                 );
               },
-              child: Text('Logout'),
               style: ElevatedButton.styleFrom(
                   // primary: Colors.red, // background
                   // onPrimary: Colors.white, // foreground
                   ),
+              child: const Text('Logout'),
             ),
           ],
         ),

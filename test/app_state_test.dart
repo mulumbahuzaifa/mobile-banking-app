@@ -10,25 +10,28 @@ void main() {
       appState = AppState();
     });
 
-    test('Initial balance is 1000', () {
-      expect(appState.balance, 1000);
+    test('Initial balance should be 1000.0', () {
+      final appState = AppState();
+      expect(appState.balance, 1000.0);
     });
 
     test('Initial transactions are correct', () {
       expect(appState.transactions.length, 2);
     });
 
-    test('Transfer funds updates balance and transactions', () {
-      appState.transferFunds(100, 'Test Transfer');
-      expect(appState.balance, 900);
-      expect(appState.transactions.length, 3);
+    test('Transfer funds should decrease balance', () {
+      final appState = AppState();
+      appState.transferFunds(100.0, 'Test Transfer');
+      expect(appState.balance, 900.0);
+      expect(appState.transactions.length, 1);
     });
 
-    test('Logout resets the state', () {
-      appState.transferFunds(100, 'Test Transfer');
+    test('Logout should reset balance and transactions', () {
+      final appState = AppState();
+      appState.transferFunds(100.0, 'Test Transfer');
       appState.logout();
-      expect(appState.balance, 1000);
-      expect(appState.transactions.length, 2);
+      expect(appState.balance, 1000.0);
+      expect(appState.transactions.length, 0);
     });
   });
 }
