@@ -26,3 +26,9 @@ flutter pub get
 
 3. **Run the App:**
 flutter run
+
+4. **Login Screen:**
+Use sample app test simulated Login Credential below
+
+Username: user@example.com
+password: password
